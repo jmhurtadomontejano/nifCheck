@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang=”en”>
+
+<head>
+    <meta charset=”UTF-8″ />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página para calcular la letra del DNI</title>
+</head>
+<body>
+   <h1>Página para calcular la letra del DNI</h1>
+<button><a href="">Pulsa el botón para calcular</a></button>
+
+</body>
+<script>
+
+    const calculate = (param) => {
+        if (isNaN(param)) {
+            alert('This is not a number, please, insert a correct number')
+            calculate(param);
+        } else {
+            if (param < 0 || param > 99999999) {
+                return "This is not a number";
+            } else {
+                const letters = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J',
+                    'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+                const rest = param % 23;
+              
+                const letter = letters[rest];
+                alert(letter);
+                return letter;
+            }
+        }
+    }
+
+    let end = false;
+    while (!end) {
+        let nif = prompt('Please, Introduce the cif number that you want to comprobate');
+        const letter = calculate(nif);
+        alert(letra)
+        confirm('¿Do you want to calculate another nif?');
+    }
+</script>
+</html>

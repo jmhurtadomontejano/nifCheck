@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<header>
+    <h1>Página de comprobación de letra de DNI´s</h1>
+</header>
+
+<body>
+    <h2>Calcular letra del DNI</h2>
+    <form name="letradni" action="" method="get">
+        Introduce aqui el Numero de DNI:<input type="text" name="numdni" maxlenght="9" size="9">
+
+        <br>
+
+        <input type="button" value="Calcular Letra" onclick="this.form.letra.value=calcletra(this.form.numdni.value);">
+        <input type="text" name="letra" size="1" readonly>
+        <h2>Comprobar DNI completo</h2>
+        Introduce aqui el Numero de DNI con letra:<input type="text" name="numDniCompleto" maxlenght="9" size="9">
+
+        <input type="button" value="Comprobar DNI entero"
+            onclick="this.form.resultadoComprobarNif.value=comprobarNif(this.form.numDniCompleto.value);">
+        <br>
+        <input type="text-area" name="resultadoComprobarNif" size="100" readonly>
+    </form>
+</body>
+<script>
+    function calcletra(dni) {
+
+        
+        var JuegoCaracteres = "TRWAGMYFPDXBNJZSQVHLCKET";
+        var Posicion = dni % 23;
+        var Letra = JuegoCaracteres.charAt(Posicion);
+        return Letra;
+    }
+
+    function comprobarNif(dniConLetra) {
+        var numero
+        var letr
+        var letra
+        var expresion_regular_dni
+        var msgResultado
+
+        console.clear;
+        console.log('==============')
+        console.log('COMPROBAR NIF CON LETRA');
+
+
+        expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+        console.log("Vamos a comprobar el NIF: " + dniConLetra)
+        if (expresion_regular_dni.test(dniConLetra) == true) {
+            numero = dniConLetra.substr(0, dniConLetra.length - 1);
+            letr = dniConLetra.substr(dniConLetra.length - 1, 1);
+            resto = numero % 23;
+            letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+            letra = letra.substring(resto, resto + 1);
+            if (letra != letr.toUpperCase()) {
+                msgResultado = 'Dni erroneo, la letra del NIF:"' + letr + '" no se corresponde con el numero "' + numero + '"'
+                console.log(msgResultado);
+            } else {
+                msgResultado = 'Dni correcto'
+                console.log(msgResultado);
+            }
+        } else {
+            msgResultado = 'Dni erroneo. El DNI debe contener 8 numeros seguido de 1 letra'
+            console.log(msgResultado);
+        }
+        return msgResultado
+    }
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "tablaweb",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8",
+    "readline-sync": "^1.4.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmhurtadomontejano/nifCheck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmhurtadomontejano/nifCheck/issues"
+  },
+  "homepage": "https://github.com/jmhurtadomontejano/nifCheck#readme",
+  "description": ""
+}
